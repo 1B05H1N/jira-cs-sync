@@ -1,0 +1,45 @@
+# sync_config.yaml
+
+jira_project_key: "your_jira_project_key" # Jira project key
+
+custom_fields:
+  incident:
+    display_name: "your_jira_custom_incident_name_field" # Custom field name in Jira for incident IDs
+    field_id: "your_jira_custom_incident_ID_field"          # Custom field ID in Jira for incident IDs
+  alert:
+    display_name: "your_jira_custom_alert_name_field"        # Custom field name in Jira for alert IDs
+    field_id: "your_jira_custom_alert_name_field"            # Custom field ID in Jira for alert IDs
+
+jira_status_mapping_incidents:
+  new: 20
+  reopened: 25
+  in progress: 30
+  done: 40
+
+jira_status_mapping_alerts:
+  ignored: "ignored"
+  new: "new"
+  in progress: "in_progress"
+  true positive: "true_positive"
+  false positive: "false_positive"
+
+open_statuses:
+  - "To Do"
+  - "In Progress"
+  - "Reopened"
+
+sync_options:
+  sync_status: true
+  sync_assignee: true
+  sync_comments: true
+  sync_comments_for_closed: false
+
+# Jira UUID to CrowdStrike (Cortex) UUID mapping
+jira_to_cs_user_map:
+  "jira_user_1": "cs_user_uuid_1"
+  "jira_user_2": "cs_user_uuid_2"
+
+max_workers: 5
+max_retries: 5
+backoff_factor: 2
+poll_interval: 60
